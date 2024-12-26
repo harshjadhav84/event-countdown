@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Countdown</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <!-- Video Background Wrapper -->
+    <div class="video-wrapper">
+      <!-- Background Video -->
+      <div class="video-background">
+        <video autoplay muted loop playsinline class="w-100 h-100">
+          <source src="Images/Background.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <!-- Hero Section -->
+      <section class="hero-section text-center text-white py-5">
+        <div class="container mt-3">
+          <h1 class="display-4 mb-4">Future TechFest 2025</h1>
+          <p class="lead">Date: January 03, 2025 | Location: Mumbai</p>
+        </div>
+      </section>
+
+      <!-- Countdown Timer -->
+      <section class="countdown-section text-center text-white py-5">
+        <div class="container">
+          <h2 class="text-white">Countdown to the Event</h2>
+          <div id="countdown" class="d-flex justify-content-center mt-4">
+            <div class="time-unit mx-3">
+              <span id="days" class="display-4">00</span>
+              <p>Days</p>
+            </div>
+            <div class="time-unit mx-3">
+              <span id="hours" class="display-4">00</span>
+              <p>Hours</p>
+            </div>
+            <div class="time-unit mx-3">
+              <span id="minutes" class="display-4">00</span>
+              <p>Minutes</p>
+            </div>
+            <div class="time-unit mx-3">
+              <span id="seconds" class="display-4">00</span>
+              <p>Seconds</p>
+            </div>
+          </div>
+          <p id="timer-message" class="mt-4 text-warning"></p>
+        </div>
+      </section>
+    </div>
+
+    <!-- About the Event -->
+    <section class="about-section">
+      <h2>About the Event</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="box">
+            <div class="features">
+              <i class="fas fa-info-circle"></i>
+            </div>
+            <h4>Overview</h4>
+            <p>
+              Future TechFest 2025 is a premier technology and innovation
+              conference designed to bring together industry leaders,
+              professionals, and enthusiasts to shaping the future.
+            </p>
+          </div>
+        </div> 
+        <div class="col-md-4">
+          <div class="box">
+            <div class="features">
+              <i class="fas fa-bullseye"></i>
+            </div>
+            <h4>Purpose</h4>
+            <p>
+              To provide a platform for knowledge sharing, networking, and
+              collaborative growth in the tech ecosystem, fostering innovation
+              and partnerships across various domains.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="box">
+            <div class="features">
+              <i class="fas fa-bullhorn"></i>
+            </div>
+            <h4>Highlights</h4>
+            <p>
+              Interactive sessions, keynote speeches by tech visionaries,
+              hands-on workshops, and networking opportunities that inspire
+              innovation and creativity in the tech community.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--Weather forcast-->
+    <section id="weather-section" class="weather-section">
+      <div class="container">
+        <h2 class="section-title">Event Day Weather Forecast</h2>
+        <div class="weather-card">
+          <div id="weather-icon"></div>
+          <div>
+            <p class="weather-temp" id="weather-temp"></p>
+            <p class="weather-desc" id="weather-desc"></p>
+            <p class="weather-location">
+              <i class="fas fa-map-marker-alt"></i> Mumbai, India
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Speakers/Hosts Section -->
+    <section class="speakers-section bg-white py-5">
+      <div class="container">
+        <h2 class="text-center">Speakers</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          <!-- Speaker 1 -->
+          <div class="col">
+            <div class="card team-card shadow-lg">
+              <img
+                src="Images/JohnDoe.jpg"
+                class="card-img-top"
+                alt="Speaker 1"
+              />
+              <div class="card-body text-center">
+                <h5 class="card-title">John Doe</h5>
+                <p class="card-text text-muted">Expert in Technology</p>
+                <p style="text-align: left">
+                  <strong>Bio:</strong> A passionate technologist with over 10
+                  years of experience in software development and leadership
+                  roles.
+                </p>
+                <a
+                  href="#"
+                  class="btn btn-primary"
+                  onclick="followSpeaker('John Doe')"
+                  >Follow</a
+                >
+                <a
+                  href="https://linkedin.com"
+                  class="btn btn-secondary"
+                  target="_blank"
+                  >LinkedIn</a
+                >
+                <a
+                  href="https://twitter.com"
+                  class="btn btn-secondary"
+                  target="_blank"
+                  >Twitter</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Speaker 2 -->
+          <div class="col">
+            <div class="card team-card shadow-lg">
+              <img
+                src="Images/EmilyCarter.jpg"
+                class="card-img-top"
+                alt="Speaker 2"
+              />
+              <div class="card-body text-center">
+                <h5 class="card-title">Emily Carter</h5>
+                <p class="card-text text-muted">Innovator in AI Solutions</p>
+                <p style="text-align: left">
+                  <strong>Bio:</strong> Skilled in artificial intelligence and
+                  machine learning, with a focus on developing scalable
+                  solutions.
+                </p>
+                <a
+                  href="#"
+                  class="btn btn-primary"
+                  onclick="followSpeaker('Emily Carter')"
+                  >Follow</a
+                >
+                <a
+                  href="https://linkedin.com"
+                  class="btn btn-secondary"
+                  target="_blank"
+                  >LinkedIn</a
+                >
+                <a
+                  href="https://twitter.com"
+                  class="btn btn-secondary"
+                  target="_blank"
+                  >Twitter</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Speaker 3 -->
+          <div class="col">
+            <div class="card team-card shadow-lg">
+              <img
+                src="Images/AlexJohnson.jpg"
+                class="card-img-top"
+                alt="Speaker 3"
+              />
+              <div class="card-body text-center">
+                <h5 class="card-title">Alex Johnson</h5>
+                <p class="card-text text-muted">Web Development Specialist</p>
+                <p style="text-align: left">
+                  <strong>Bio:</strong> Expertise in frontend and backend
+                  development, delivering high-performance web solutions.
+                </p>
+                <a
+                  href="#"
+                  class="btn btn-primary"
+                  onclick="followSpeaker('Alex Johnson')"
+                  >Follow</a
+                >
+                <a
+                  href="https://linkedin.com"
+                  class="btn btn-secondary"
+                  target="_blank"
+                  >LinkedIn</a
+                >
+                <a
+                  href="https://twitter.com"
+                  class="btn btn-secondary"
+                  target="_blank"
+                  >Twitter</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section class="schedule-section bg-light py-5">
+      <div class="container">
+        <h2 class="text-center">Schedule</h2>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <div class="schedule-item">
+              <strong>10:00 AM</strong> - Welcome and Introduction
+              <p class="text-muted mt-2">
+                A warm welcome by the event host, followed by an introduction to
+                the day's schedule and objectives.
+              </p>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="schedule-item">
+              <strong>10:30 AM</strong> - Opening Remarks by Event Chair
+              <p class="text-muted mt-2">
+                Insights into the theme of the event and its significance in the
+                tech industry.
+              </p>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="schedule-item">
+              <strong>11:00 AM</strong> - Keynote Speech: "The Future of
+              Technology"
+              <p class="text-muted mt-2">
+                Delivered by a renowned industry leader, exploring trends and
+                challenges in technology.
+              </p>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="schedule-item">
+              <strong>12:00 PM</strong> - Panel Discussion: "Innovations in
+              Artificial Intelligence"
+              <p class="text-muted mt-2">
+                Experts discuss the latest advancements and practical
+                applications of AI.
+              </p>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="schedule-item">
+              <strong>12:30 PM</strong> - Networking Break
+              <p class="text-muted mt-2">
+                An opportunity for attendees to connect and discuss ideas
+                informally.
+              </p>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="schedule-item">
+              <strong>01:30 PM</strong> - Workshop 1: "Building Scalable Web
+              Applications"
+              <p class="text-muted mt-2">
+                A hands-on session led by experienced developers.
+              </p>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="schedule-item">
+              <strong>02:30 PM</strong> - Workshop 2: "Introduction to
+              Blockchain Technology"
+              <p class="text-muted mt-2">
+                An interactive workshop for beginners to understand blockchain
+                fundamentals.
+              </p>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="schedule-item">
+              <strong>03:30 PM</strong> - Fireside Chat: "Women in Tech -
+              Challenges and Opportunities"
+              <p class="text-muted mt-2">
+                A candid conversation with inspiring women leaders in
+                technology.
+              </p>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="schedule-item">
+              <strong>04:30 PM</strong> - Lightning Talks
+              <p class="text-muted mt-2">
+                Short, engaging presentations by emerging professionals on
+                innovative topics.
+              </p>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="schedule-item">
+              <strong>05:30 PM</strong> - Closing Keynote: "Empowering the Next
+              Generation of Innovators"
+              <p class="text-muted mt-2">
+                A motivational talk encouraging attendees to lead the future of
+                technology.
+              </p>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="schedule-item">
+              <strong>06:30 PM</strong> - Virtual Afterparty and Social
+              Engagement
+              <p class="text-muted mt-2">
+                A fun and interactive session to celebrate the day with music
+                and networking.
+              </p>
+            </div>
+          </li>
+          <!-- Add more schedule items -->
+        </ul>
+      </div>
+    </section>
+
+    <!-- Registration Form -->
+    <section id="registration" class="registration-section py-5">
+      <div class="container">
+        <h2 class="text-center">Register Now</h2>
+        <p class="text-center">
+          Sign up today to secure your spot and receive updates!
+        </p>
+        <form id="registrationForm" class="registration-form">
+          <div class="mb-3">
+            <label for="name" class="form-label">Full Name</label>
+            <input
+              type="text"
+              id="name"
+              class="form-control"
+              placeholder="Enter your full name"
+              required
+            />
+            <!-- Invalid feedback for name -->
+            <div id="name-error" class="invalid-feedback" style="display: none">
+              Name can only contain letters and spaces.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              class="form-control"
+              placeholder="Enter your email"
+              required
+            />
+            <!-- Invalid feedback for email -->
+            <div class="invalid-feedback">
+              Please enter a valid email address.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="form-label">Phone Number</label>
+            <input
+              type="tel"
+              id="phone"
+              class="form-control"
+              placeholder="Enter your phone number"
+              required
+            />
+            <!-- Invalid feedback for phone -->
+            <div class="invalid-feedback">
+              Please enter a valid phone number.
+            </div>
+          </div>
+
+          <div id="form-message" class="form-message"></div>
+
+          <button type="submit" class="btn btn-primary w-100">Register</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Photo Gallery Carousel -->
+    <section class="photo-gallery-section py-5">
+      <div class="container">
+        <h2 class="text-center mb-4">Previous Event Highlights</h2>
+        <div
+          id="eventHighlightsCarousel"
+          class="carousel slide"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img
+                src="Images/event1.jpg"
+                class="d-block w-100"
+                alt="Event Highlight 1"
+              />
+            </div>
+            <div class="carousel-item">
+              <img
+                src="Images/event2.jpg"
+                class="d-block w-100"
+                alt="Event Highlight 2"
+              />
+            </div>
+            <div class="carousel-item">
+              <img
+                src="Images/event3.jpg"
+                class="d-block w-100"
+                alt="Event Highlight 3"
+              />
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#eventHighlightsCarousel"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#eventHighlightsCarousel"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Engagement Section -->
+    <section class="engagement-section py-5">
+      <div class="container">
+        <h2 class="text-left">Engagement</h2>
+        <div id="social-feed" class="row">
+          <!-- Dynamic content from social media will be embedded here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <!-- Contact Details -->
+        <div class="contact-details">
+          <h3>Contact Us</h3>
+          <p>123 Event Street, Tech City, India</p>
+          <p>Email: info@futuretechfest.com</p>
+          <p>Phone: +91 123 456 7890</p>
+        </div>
+
+        <!-- Social Media Links -->
+        <div class="social-media">
+          <h3>Follow Us</h3>
+          <a
+            href="https://facebook.com"
+            target="_blank"
+            class="social-icon facebook"
+          >
+            <i class="fab fa-facebook-f"></i> Facebook
+          </a>
+          <a
+            href="https://twitter.com"
+            target="_blank"
+            class="social-icon twitter"
+          >
+            <i class="fab fa-twitter"></i> Twitter
+          </a>
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            class="social-icon instagram"
+          >
+            <i class="fab fa-instagram"></i> Instagram
+          </a>
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            class="social-icon linkedin"
+          >
+            <i class="fab fa-linkedin-in"></i> LinkedIn
+          </a>
+        </div>
+
+        <!-- Subscription Form -->
+        <div class="subscription-form">
+          <h3>Subscribe for Updates</h3>
+          <form id="subscription-form">
+            <input
+              type="text"
+              id="subscriber-name"
+              placeholder="Enter your name"
+              required
+            />
+            <input
+              type="email"
+              id="subscriber-email"
+              placeholder="Enter your email"
+              required
+            />
+            <select id="preferences" required>
+              <option value="" disabled selected>
+                Select your preferences
+              </option>
+              <option value="Tech">Tech Updates</option>
+              <option value="Events">Events</option>
+              <option value="News">Latest News</option>
+            </select>
+            <textarea
+              id="comments"
+              placeholder="Additional comments (optional)"
+            ></textarea>
+            <button type="submit">Subscribe</button>
+          </form>
+          <!-- Error or Success message will be displayed here -->
+          <p class="form-message" id="form-message"></p>
+        </div>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="script.js"></script>
+  </body>
+</html>
